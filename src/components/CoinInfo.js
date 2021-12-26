@@ -1,22 +1,16 @@
 import axios from "axios";
 import '../styles/coinInfo.css'
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import CoinContext from "../context/coininfo/CoinContext";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import CoinApi from '../Api/coinApi.js';
 const Coininfo = () => {
   const mdata = useContext(CoinContext);
-  var options1 = {
-    method: "GET",
-    url: "https://coinranking1.p.rapidapi.com/coins",
-    headers: {
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-      "x-rapidapi-key": "4a5887dcb0msh2713e9a2401ff4cp1f6a17jsnd8afcb81a87c",
-    },
-  };
+  
   useEffect(() => {
     axios
-      .request(options1)
+      .request(CoinApi)
       .then(function (response) {
         console.log(response.data.data.coins);
         mdata.setlistofcoins(response.data.data.coins);
@@ -27,7 +21,7 @@ const Coininfo = () => {
       });
   }, []);
   return (
-    <div style={{textAlign:'center'}}>
+    <div id="coin-info" style={{textAlign:'center'}}>
       <Autocomplete
         disablePortal
         id="combo-box-demo"
