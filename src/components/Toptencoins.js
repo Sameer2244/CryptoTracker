@@ -37,7 +37,7 @@ const Toptencoins = () => {
       >
         {mdata.listofcoins.map((e, i) =>
           i < 10 ? (
-            <Grid item xs={12} sm={6} md={3} sx={{ margin: "auto" }}>
+            <Grid key={e.id} item xs={12} sm={6} md={3} sx={{ margin: "auto" }}>
               <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                   <Box sx={{ display: "flex", justifyContent: "space-around" }}>
